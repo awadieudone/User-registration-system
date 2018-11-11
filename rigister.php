@@ -9,29 +9,33 @@
 </head>
 <body>
     <div class="header">
-        <h4>Register</h4>
+        <h3>Register</h3>
     </div>
-    <form action="index.php" method="post">
-        <div class="input-group">
-            <label for="firstname">Enter Firstname</label>
-            <input type="text" name="firstname">
-        </div>
-        <div class="input-group">
-            <label for="lastname">Enter Lastname</label>    
-            <input type="text" name="lastname">
-        </div>
-        <div class="input-group">
-            <label for="username">Enter Username</label>
-            <input type="text" name="username">
-        </div>
-        <div class="input-group">
-            <label for="email">Enter Email</label>
-            <input type="email" name="email">
-        </div>
-        <div class="input-group">
-            <label for="password">Enter Password</label>
-            <input type="password" name="password" id="">
-        </div>
-    </form>
+    <div class="form">
+        <form action="rigister.php" method="post">
+            <div class="input-group">
+                <label for="firstname">Enter Firstname</label>
+                <input type="text" name="firstname">
+            </div>
+            <div class="input-group">
+                <label for="lastname">Enter Lastname</label>    
+                <input type="text" name="lastname">
+            </div>
+            <div class="input-group">
+                <label for="username">Enter Username</label>
+                <input type="text" name="username">
+            </div>
+            <div class="input-group">
+                <label for="email">Enter Email</label>
+                <input type="email" name="email">
+            </div>
+            <div class="input-group">
+                <label for="password">Enter Password</label>
+                <input type="password" name="password" id="">
+            </div>
+            <input class="btn" type="submit" value="Sign up">
+            <p>Are you a member already?<a href="login.php">Log in</a></p>
+        </form>
+    </div>
 </body>
 </html>
