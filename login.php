@@ -1,13 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<?php include "includes/header.php"; ?>
+<?php include "includes/db.php"; ?>
+<?php
+session_start();
+$_SESSION['logged'] = "";
+
+    if(isset($_POST['submit'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+    $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    $select_result= mysqli_query($conn, $query);
+    if(mysqli_num_rows($select_result)) {
+        $_SESSION['logged'] = "You are successfully logged in";
+        // echo "Logged in";
+    } else {
+        die("Please <h2><a href='register.php'>sign up</a></h2> first");
+    }
+    
+
+    
+    }
+?>
+
+
+<h2><?php
+    if($_SESSION['logged']) {
+        echo $_SESSION['logged'];
+    }
+
+?></h2>
+
     <div class="header">
         <h3>Login</h3>
     </div>
@@ -21,10 +43,8 @@
                 <label for="password">Enter Password</label>
                 <input type="password" name="password" id="">
             </div>
-            <input class="btn" type="submit" value="Log in">
+            <input class="btn" name="submit" type="submit" value="Log in">
 
-            <p>Not yet a member? <a href="rigister.php"></a></p>
+            <p>Not yet a member? <a href="register.php">Create Account</a></p>
         </form>
-    </div>
-</body>
-</html>
+    <?php include "includes/footer.php"; ?>

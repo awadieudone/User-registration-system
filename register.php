@@ -1,13 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<?php include "includes/header.php"; ?>
+<?php include "includes/db.php"; ?>
+<?php
+session_start();
+$_SESSION['registered'] = "";
+
+    if(isset($_POST['submit'])) {
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $query = "INSERT INTO users(firstname,lastname,username,email,password) 
+        VALUES('$firstname','$lastname','$username','$email','$password')";
+        $insert_result = mysqli_query($conn,$query);
+
+        if(!$insert_result) {
+            die("Insertion failure".mysqli_error(($conn)));
+        } else {
+            $_SESSION['registered'] = "You are registered successfully";
+            
+        }
+    }
+?>
+    <h2><?php
+        if($_SESSION['registered']){
+            echo $_SESSION['registered'];
+        }
+    ?></h2>
     <div class="header">
         <h3>Register</h3>
     </div>
@@ -33,9 +53,7 @@
                 <label for="password">Enter Password</label>
                 <input type="password" name="password" id="">
             </div>
-            <input class="btn" type="submit" value="Sign up">
+            <input class="btn" type="submit" name="submit" value="Sign up">
             <p>Are you a member already?<a href="login.php">Log in</a></p>
         </form>
-    </div>
-</body>
-</html>
+    <?php include "includes/footer.php"; ?>
