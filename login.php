@@ -12,6 +12,8 @@ $_SESSION['logged'] = "";
     $select_result= mysqli_query($conn, $query);
     if(mysqli_num_rows($select_result)) {
         $_SESSION['logged'] = "You are successfully logged in";
+        header("Location: index.php");
+        exit(0);
         // echo "Logged in";
     } else {
         die("Please <h2><a href='register.php'>sign up</a></h2> first");
@@ -21,14 +23,6 @@ $_SESSION['logged'] = "";
     
     }
 ?>
-
-
-<h2><?php
-    if($_SESSION['logged']) {
-        echo $_SESSION['logged'];
-    }
-
-?></h2>
 
     <div class="header">
         <h3>Login</h3>
