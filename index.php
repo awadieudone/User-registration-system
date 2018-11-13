@@ -13,12 +13,12 @@
 </head>
 <body>
     <h1><?php
-        if(isset($_SESSION['logged'])) {
-           echo $_SESSION['logged'];
-           unset($_SESSION['logged']);
-        //    header("Location: index.php");
+        if(isset($_SESSION['message'])) {
+           echo $_SESSION['message'];
+           unset($_SESSION['message']);
         }
-        
       ?></h1>
+      <h2>Welcome, <?php echo $_SESSION['username']; ?></h2>
+
 </body>
 </html>
